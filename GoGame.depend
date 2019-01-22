@@ -1,0 +1,48 @@
+# depslib dependency file v1.0
+1546964703 source:c:\users\dell\desktop\gogame\grid.c
+
+1546940791 c:\users\dell\desktop\gogame\grid.h
+
+1547752662 source:c:\users\dell\desktop\gogame\logic.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"pvp.h"
+	"logic.h"
+
+1548165855 c:\users\dell\desktop\gogame\pvp.h
+	"logic.h"
+
+1546955848 source:c:\users\dell\desktop\gogame\menu.c
+	<stdio.h>
+	<stdlib.h>
+	"menu.h"
+
+1546591690 c:\users\dell\desktop\gogame\menu.h
+
+1548165789 source:c:\users\dell\desktop\gogame\pvp.c
+	<stdio.h>
+	<stdlib.h>
+	<conio.h>
+	<unistd.h>
+	"pvp.h"
+	"utils.h"
+
+1546598559 source:c:\users\dell\desktop\gogame\main.c
+	<stdio.h>
+	<stdlib.h>
+	"pvp.h"
+	"grid.h"
+	"menu.h"
+	"logic.h"
+
+1547548322 c:\users\dell\desktop\gogame\logic.h
+
+1547547046 source:c:\users\dell\desktop\gogame\utils.c
+	<stdio.h>
+	<stdlib.h>
+	"logic.h"
+	"pvp.h"
+
+1546943004 c:\users\dell\desktop\gogame\utils.h
+
