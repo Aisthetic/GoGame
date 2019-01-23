@@ -23,6 +23,6 @@ void capture(Token token);
 void computeScore();
 Team* getAllTeams();
 int teamIsClosed();
-
+Token KoIncompatibleSlot;
 #endif
 

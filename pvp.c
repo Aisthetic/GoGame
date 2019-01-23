@@ -4,8 +4,7 @@
 #include <unistd.h>
 #include "pvp.h"
 #include "utils.h"
-
-
+#include <string.h>
 //TODO : Actualisation des teams des allies
 
 void endTurn(){
@@ -149,7 +148,8 @@ void startTurnLoop(){
 
 void putToken(int X,int Y){
     Token backupTGrid[9][9];
-    backupTGrid = tGrid;
+
+    copyMatrix(backupTGrid,tGrid);
     grid[Y-1][X-1] = turn%2 == 0?'A':'B';//Indexation de 1 à 9 sur l'ihm
 
     //Définition du token
@@ -198,10 +198,10 @@ void putToken(int X,int Y){
     }
 
     //KoRule
-    if(checkCapture(token) || (token.X=KoIncompatibleSlot.X && token.Y=KoIncompatibleSlot.Y)){
+    if(checkCapture(token) || (token.X==KoIncompatibleSlot.X && token.Y==KoIncompatibleSlot.Y)){
         printf("KO rule incompatible slot !");
         grid[Y-1][X-1] = ' ';
-        tGrid = backupTGrid;
+        copyMatrix(tGrid,backupTGrid);
         skipTurn = 1;
     }
 
@@ -218,7 +218,7 @@ void putToken(int X,int Y){
         printf("\n");
         if(checkCapture(ennemies.Members[i])){
             printf("capture du token (%d,%d) \n",token.X,token.Y);
-            capture(ennemies.Members[i]));
+            capture(ennemies.Members[i]);
         }
     }
 

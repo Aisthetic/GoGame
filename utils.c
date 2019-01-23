@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include "logic.h"
 #include "pvp.h"
 
@@ -36,4 +37,11 @@ Team teamUnion(Team team1, Team team2)//L'union de deux teams
         printf("Membre (%d,%d) \n",team1.Members[i].X,team1.Members[i].Y);
     }
     return team1;
+}
+void copyMatrix(void** a,void** c){
+    int i;
+    for(i = 0; i<9; i++)
+    {
+        memcpy(&a[i], &c[i], sizeof(c[0]));
+    }
 }

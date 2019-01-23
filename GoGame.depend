@@ -10,7 +10,7 @@
 	"pvp.h"
 	"logic.h"
 
-1548165855 c:\users\dell\desktop\gogame\pvp.h
+1548271900 c:\users\dell\desktop\gogame\pvp.h
 	"logic.h"
 
 1546955848 source:c:\users\dell\desktop\gogame\menu.c
@@ -38,9 +38,10 @@
 
 1547548322 c:\users\dell\desktop\gogame\logic.h
 
-1547547046 source:c:\users\dell\desktop\gogame\utils.c
+1548272675 source:c:\users\dell\desktop\gogame\utils.c
 	<stdio.h>
 	<stdlib.h>
+	<string.h>
 	"logic.h"
 	"pvp.h"
 
