@@ -2,6 +2,7 @@
 #define PVP_H_INCLUDED
 #include "logic.h"
 
+int skipTurn;
 int gameOver;
 int turn;
 int passCount;
@@ -17,7 +18,7 @@ void startTurnLoop();
 void putToken(int hpos,int vpos);
 int checkSlot(int hpos,int vpos);
 void initPvp(char ** _grid);
-void checkCapture(Token token);
+int checkCapture(Token token);
 void capture(Token token);
 void computeScore();
 Team* getAllTeams();

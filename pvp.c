@@ -11,7 +11,7 @@
 void endTurn(){
     //system("@cls||clear");
     printGrid(grid);
-    turn++;
+    if(!skipTurn)turn++;
 }
 
 void endGame(){
@@ -112,6 +112,8 @@ void startTurnLoop(){
 	//Choix d'une pos sur la grille
 	while(!gameOver){
         printf("----Turn %d %d----\n", turn,passCount);
+        skipTurn = 0;//reset de la variable
+
         //Check si les deux ont passé
         if(passCount == 2){//fin du jeu
             break;
@@ -136,9 +138,9 @@ void startTurnLoop(){
 		printf("Choose Y : \n");//X
 		scanf("%d", &Y);
 
-//        if(checkSlot(X,Y) == 0) {
-//            continue;
-//        }
+       if(checkSlot(X,Y) == 0) {
+            continue;
+        }
         putToken(X,Y);
 		endTurn();
 	}
@@ -146,6 +148,8 @@ void startTurnLoop(){
 
 
 void putToken(int X,int Y){
+    Token backupTGrid[9][9];
+    backupTGrid = tGrid;
     grid[Y-1][X-1] = turn%2 == 0?'A':'B';//Indexation de 1 à 9 sur l'ihm
 
     //Définition du token
@@ -193,6 +197,15 @@ void putToken(int X,int Y){
         printf("final team member (%d,%d) \n",token.team.Members[i].X,token.team.Members[i].Y);
     }
 
+    //KoRule
+    if(checkCapture(token) || (token.X=KoIncompatibleSlot.X && token.Y=KoIncompatibleSlot.Y)){
+        printf("KO rule incompatible slot !");
+        grid[Y-1][X-1] = ' ';
+        tGrid = backupTGrid;
+        skipTurn = 1;
+    }
+
+
     //Capture check
     printf("checking if any surrounding ennemy can be captured..\n");
     Team ennemies;
@@ -203,15 +216,17 @@ void putToken(int X,int Y){
             printf("(%d,%d) ",ennemies.Members[i].X,ennemies.Members[i].Y);
         }
         printf("\n");
-        checkCapture(ennemies.Members[i]);
+        if(checkCapture(ennemies.Members[i])){
+            printf("capture du token (%d,%d) \n",token.X,token.Y);
+            capture(ennemies.Members[i]));
+        }
     }
-
 
     //fin du tour
     system("pause");
 }
 
-void checkCapture(Token token){
+int checkCapture(Token token){
     for(int i = 0; i < token.team.MembersCount; i++){
         printf("checking capture for token (%d,%d) \n",token.team.Members[i].X,token.team.Members[i].Y);
         Team allies;
@@ -227,15 +242,18 @@ void checkCapture(Token token){
         printf("token's liberty degree is %d \n",liberty);
         if(liberty>0){
             printf("le token est libre. \n");
-            return;
+            return 0;
         }
     }
-    printf("capture du token (%d,%d) \n",token.X,token.Y);
-    capture(token);
+    return 1;
 }
 
 
 void capture(Token token){
+    //Si c'est un seul token, on met en place la règle du KO
+    if(token.team.MembersCount==1){
+        KoIncompatibleSlot = token;
+    }
     //Mise à jour des grid
     for(int i =0;i<token.team.MembersCount;i++){
         grid[token.team.Members[i].Y][token.team.Members[i].X] = ' ';
@@ -261,6 +279,7 @@ int checkSlot(int X,int Y){
         printf("Already taken by  ! (%s)\n",grid[X-1][Y-1]);
         return 0;
     }
+
     //tout est ok
     return 1;
 }
