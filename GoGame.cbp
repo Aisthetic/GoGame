@@ -31,6 +31,10 @@
 		<Compiler>
 			<Add option="-Wall" />
 		</Compiler>
+		<Unit filename="game.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="game.h" />
 		<Unit filename="grid.c">
 			<Option compilerVar="CC" />
 		</Unit>
@@ -46,10 +50,6 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="menu.h" />
-		<Unit filename="pvp.c">
-			<Option compilerVar="CC" />
-		</Unit>
-		<Unit filename="pvp.h" />
 		<Unit filename="score.c">
 			<Option compilerVar="CC" />
 		</Unit>

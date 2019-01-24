@@ -3,22 +3,22 @@
 
 1546940791 c:\users\dell\desktop\gogame\grid.h
 
-1548340994 source:c:\users\dell\desktop\gogame\logic.c
+1548361959 source:c:\users\dell\desktop\gogame\logic.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
-	"pvp.h"
+	"game.h"
 	"logic.h"
 
 1548335994 c:\users\dell\desktop\gogame\pvp.h
 	"logic.h"
 
-1546955848 source:c:\users\dell\desktop\gogame\menu.c
+1548358932 source:c:\users\dell\desktop\gogame\menu.c
 	<stdio.h>
 	<stdlib.h>
 	"menu.h"
 
-1546591690 c:\users\dell\desktop\gogame\menu.h
+1548358928 c:\users\dell\desktop\gogame\menu.h
 
 1548341359 source:c:\users\dell\desktop\gogame\pvp.c
 	<stdio.h>
@@ -30,30 +30,43 @@
 	"score.h"
 	<string.h>
 
-1546598559 source:c:\users\dell\desktop\gogame\main.c
+1548362594 source:c:\users\dell\desktop\gogame\main.c
 	<stdio.h>
 	<stdlib.h>
-	"pvp.h"
+	"game.h"
 	"grid.h"
 	"menu.h"
 	"logic.h"
 
 1547548322 c:\users\dell\desktop\gogame\logic.h
 
-1548272675 source:c:\users\dell\desktop\gogame\utils.c
+1548361991 source:c:\users\dell\desktop\gogame\utils.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
 	"logic.h"
-	"pvp.h"
+	"game.h"
 
 1548272675 c:\users\dell\desktop\gogame\utils.h
 
 1548341938 c:\users\dell\desktop\gogame\score.h
 
-1548342087 source:c:\users\dell\desktop\gogame\score.c
+1548361962 source:c:\users\dell\desktop\gogame\score.c
 	<stdio.h>
-	"pvp.h"
+	"game.h"
 	"logic.h"
 	"score.h"
+
+1548362206 source:c:\users\dell\desktop\gogame\game.c
+	<stdio.h>
+	<stdlib.h>
+	<conio.h>
+	<unistd.h>
+	"game.h"
+	"utils.h"
+	"score.h"
+	<string.h>
+
+1548361956 c:\users\dell\desktop\gogame\game.h
+	"logic.h"
 

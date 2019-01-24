@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include "pvp.h"
+#include "game.h"
 #include "logic.h"
 #include "score.h"
 

@@ -2,11 +2,37 @@
 #include <stdlib.h>
 #include <conio.h>
 #include <unistd.h>
-#include "pvp.h"
+#include "game.h"
 #include "utils.h"
 #include "score.h"
 #include <string.h>
-//TODO : Actualisation des teams des allies
+//Initiation du mode
+void initGame(char ** _grid){
+    gameOver = 0;
+    turn= 0;
+    passCount= 0;
+	grid = _grid;
+	KoIncompatibleSlot.X = -1;
+
+	//PVP
+	if(pvp==1){
+       	printf("Player A vs Player B\n");
+        pvpGameLoop();
+	}
+
+	//PVE
+	if(pve){
+        //Tirage au sort qui commence en 1er (0=player,1=machine)
+        int machineFirst = randomInt(1,2);
+        if(machineFirst)
+            printf("La machine joue en premier ! \n");
+        else
+            printf("Vous jouez en premier ! \n");
+        pveGameLoop();
+    }
+
+    endGame();
+}
 
 void endTurn(){
     //system("@cls||clear");
@@ -19,38 +45,13 @@ void endGame(){
     printf("Game's over \n");
 }
 
-/*
-    Description: fonction pour trouver toutes les teams de la grille
-    Params: none
-    Return: tableau
-*/
-Team* getAllTeams(){
-    Team teams[81];
-    int teamsCount = 0;
-    for(int i=0;i<8;i++)
-    {
-        for(int j=0;j<8;j++){
-            int teamRegistred=0;
-            for(int k=0;k<teamsCount;k++){
-                if(sameTeam(tGrid[i][j],teams[i].Members[0]))
-                    teamRegistred=1;
-            }
-            if(!teamRegistred)
-                teams[i] = tGrid[i][j].team;
-                teamsCount++;
-        }
-    }
-    //On met -1 sur le memberCount de la derniere team pour marquer la fin du tableau
-    teams[teamsCount].MembersCount = -1;
-    return teams;
-}
 
-void startTurnLoop(){
+void pvpGameLoop(){
 	//Si le nombre de tours est pair alors A joue
 
 	//Choix d'une pos sur la grille
 	while(!gameOver){
-        printf("----Turn %d %d----\n", turn,passCount);
+        printf(">Turn %d\n", turn);
         skipTurn = 0;//reset de la variable
 
         //Check si les deux ont passé
@@ -61,7 +62,7 @@ void startTurnLoop(){
         printf("Player %c's turn \n",turn%2 == 0?'A':'B');
         //Passer ou jouer
         printf("Do you want to pass ?(yes or no)\n");
-        char* choice = malloc(sizeof(char)*3);//max 3 pour "yes"
+        char choice[3];//max 3 pour "yes"
         scanf("%s",choice);
         if (choice[0] == 'y'){//pass case
             passCount++;
@@ -85,6 +86,9 @@ void startTurnLoop(){
 	}
 }
 
+void pveGameLoop(){
+
+}
 
 void putToken(int X,int Y){
     Token backupTGrid[9][9];
@@ -225,16 +229,6 @@ int checkSlot(int X,int Y){
     return 1;
 }
 
-//Initiation du mode
-void initPvp(char ** _grid){
-    gameOver = 0;
-    turn= 0;
-    passCount= 0;
-	grid = _grid;
-	KoIncompatibleSlot.X = -1;
-	printf("Player A vs Player B\n");
-    startTurnLoop();
-    endGame();
-}
+
 
 

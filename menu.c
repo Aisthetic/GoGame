@@ -17,7 +17,7 @@ void printLogo(){
 
 }
 
-int showMenu(){
+int MainMenu(){
     int choice = 0;
     printLogo();
     printf("                            ****************************************************************\n");
@@ -48,15 +48,16 @@ int showMenu(){
     printf("                            *     *                                                        *\n");
     printf("                            ****************************************************************\n");
     scanf("%d",&choice);
-    //Mode pvp
-    if(choice==1){
-        printf("-----PVP MODE INITIATE----- \n");
-        return 1;
-    }
+    return choice;
+}
 
-    //Mode
-    if (choice==2)
-    {
+int PVEMenu(){
+        printf("                            ****************************************************************\n");
+        printf("                            *     *                                                        *\n");
+        printf("                            *  !  *             Choisissez une difficulté                  *\n");
+        printf("                            *     *                                                        *\n");
+        printf("                            ****************************************************************\n");
+        int difficulty;
         printf("                            ****************************************************************\n");
         printf("                            *     *                                                        *\n");
         printf("                            *  1  *                      Facile                            *\n");
@@ -66,7 +67,7 @@ int showMenu(){
         printf("                            *  2  *                      Avancee                           *\n");
         printf("                            *     *                                                        *\n");
         printf("                            ****************************************************************\n");
-        //scanf("%d",&diff);
-        return 2;
-    }
+        scanf("%d",&difficulty);
+        return difficulty;
 }
+

@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include "logic.h"
-#include "pvp.h"
+#include "game.h"
 
 int compare(Token token1,Token token2){//Comparer deux tokens
     return (token1.X == token2.X && token1.Y == token2.Y)?1:0;
@@ -44,4 +44,7 @@ void copyMatrix(void** a,void** c){
     {
         memcpy(&a[i], &c[i], sizeof(c[0]));
     }
+}
+int randomInt(float min, float max){
+    return rand() % (int)(max - min) + min + 1;
 }

@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "pvp.h"
+#include "game.h"
 #include "logic.h"
 
 void addMember(Team *self, Token member){

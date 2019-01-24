@@ -2,6 +2,7 @@
 #define MENU_H_INCLUDED
 
 void printLogo();
-int showMenu();
+int MainMenu();
+int PVEMenu();
 
 #endif // MENU_H_INCLUDED

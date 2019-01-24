@@ -1,6 +1,11 @@
-#ifndef PVP_H_INCLUDED
-#define PVP_H_INCLUDED
+#ifndef GAME_H_INCLUDED
+#define GAME_H_INCLUDED
 #include "logic.h"
+//Variavles pour le mode de jeu
+int pvp;
+int pve;
+int difficulty;
+int machineFirst;
 
 int skipTurn;
 int gameOver;
@@ -12,10 +17,11 @@ int ACapturedTokens;
 int BCapturedTokens;
 void endGame();
 void endTurn();
-void startTurnLoop();
+void pvpGameLoop();
+void pveGameLoop();
 void putToken(int hpos,int vpos);
 int checkSlot(int hpos,int vpos);
-void initPvp(char ** _grid);
+void initGame(char ** _grid);
 int checkCapture(Token token);
 void capture(Token token);
 Team* getAllTeams();
