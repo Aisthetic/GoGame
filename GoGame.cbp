@@ -50,6 +50,10 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="pvp.h" />
+		<Unit filename="score.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="score.h" />
 		<Unit filename="utils.c">
 			<Option compilerVar="CC" />
 		</Unit>

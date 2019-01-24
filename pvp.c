@@ -4,6 +4,7 @@
 #include <unistd.h>
 #include "pvp.h"
 #include "utils.h"
+#include "score.h"
 #include <string.h>
 //TODO : Actualisation des teams des allies
 
@@ -18,67 +19,6 @@ void endGame(){
     printf("Game's over \n");
 }
 
-
-/*
-    Description: fonction pour calculer le score final des jours
-    Params: none
-    Return: none
-*/
-void computeScore(){
-    //On cherche toutes les teams de la grid
-    Team* teams;
-    teams = getAllTeams();
-    //first of , on recupère la taille du tableau
-    int teamsCount;
-    for( teamsCount=0;teamsCount<81;teamsCount++)
-        if(teams[teamsCount].MembersCount == -1) break;
-    char** territory;
-    territory = getBlankGrid();
-    /*Algo:Calcul de score pour chaque team
-    //On distingue deux types de teams,fermées et ouvertes
-    //1:si la team est ouverte donc score = membersCount
-    //2:sinon score = membersCount + le nombre de points entourés
-    //On cherche à calculer tout les points entourés par la team
-    */
-
-    for(int i=0;i<teamsCount;i++){
-        if(!teamIsClosed(teams[i])){
-            if(teams[i].Members[0].side=='A')AScore += teams[i].MembersCount;
-            else BScore += teams[i].MembersCount;
-        }
-        else{
-            char side = teams[i].Members[0].side;
-            //Territory = grid avec la team en question seule dessus;
-            for(int j=0;j<teams[i].MembersCount;j++){
-                territory[teams[i].Members[j].X][teams[i].Members[j].Y] = side;
-            }
-            int score = 0;
-            int open =0;//bool
-            //Analyse suivant Y
-            for(int x=0;x<8;x++){
-                for(int y=0;y<8;y++){
-                    if(open)score++;
-                    if(territory[x][y]==side){
-
-                    }
-                }
-            }
-        }
-    }
-
-
-
-}
-
-/*
-    Description: check si une team est ouverte ou fermée
-    Params:
-        -Team team: la team en question
-    return: true or false
-*/
-int teamIsClosed(){
-
-}
 /*
     Description: fonction pour trouver toutes les teams de la grille
     Params: none
@@ -290,6 +230,7 @@ void initPvp(char ** _grid){
     turn= 0;
     passCount= 0;
 	grid = _grid;
+	KoIncompatibleSlot.X = -1;
 	printf("Player A vs Player B\n");
     startTurnLoop();
     endGame();

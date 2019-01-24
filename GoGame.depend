@@ -10,7 +10,7 @@
 	"pvp.h"
 	"logic.h"
 
-1548271900 c:\users\dell\desktop\gogame\pvp.h
+1548335994 c:\users\dell\desktop\gogame\pvp.h
 	"logic.h"
 
 1546955848 source:c:\users\dell\desktop\gogame\menu.c
@@ -20,13 +20,15 @@
 
 1546591690 c:\users\dell\desktop\gogame\menu.h
 
-1548165789 source:c:\users\dell\desktop\gogame\pvp.c
+1548336482 source:c:\users\dell\desktop\gogame\pvp.c
 	<stdio.h>
 	<stdlib.h>
 	<conio.h>
 	<unistd.h>
 	"pvp.h"
 	"utils.h"
+	"score.h"
+	<string.h>
 
 1546598559 source:c:\users\dell\desktop\gogame\main.c
 	<stdio.h>
@@ -45,5 +47,13 @@
 	"logic.h"
 	"pvp.h"
 
-1546943004 c:\users\dell\desktop\gogame\utils.h
+1548272675 c:\users\dell\desktop\gogame\utils.h
+
+1548336188 c:\users\dell\desktop\gogame\score.h
+
+1548336226 source:c:\users\dell\desktop\gogame\score.c
+	<stdio.h>
+	"pvp.h"
+	"logic.h"
+	"score.h"
 
