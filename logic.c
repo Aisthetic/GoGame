@@ -18,12 +18,12 @@ Team ConstructTeam(){
 }
 
 int SlotInGrid(int x,int y){
-    printf("checking if slot (%d,%d) is in grid",x,y);
+    //printf("checking if slot (%d,%d) is in grid",x,y);
     if( ((x>=0)&&(x<=8)) && ((y>=0)&&(y<=8)) ){
-        printf(" YES \n");
+        //printf(" YES \n");
         return 1; //yes
     }
-    printf(" no \n");
+    //printf(" no \n");
     return 0; //no
 }
 

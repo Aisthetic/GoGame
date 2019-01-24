@@ -12,22 +12,28 @@ int computeScore(){
             if(!isFlagged(x,y)) compute(x,y);
             char territorySide = ' ';
             //Détermination du side
+            printf("territory : ");
             for (int i=0;i<territoryLen;i++){
                 int xx = territoryX[i];
                 int yy = territoryY[i];
+                printf("(%d,%d) ",xx,yy);
                 if(grid[yy][xx]!=' '){
                     if(territorySide == ' ') territorySide = tGrid[xx][yy].side;
                     else if(territorySide != tGrid[xx][yy].side) break;
                 }
             }
+            printf("\nBoucle (%d,%d) , territoire de longueur %d , side %c \n",x,y,territoryLen,territorySide);
             //Ajout du score
             if(territorySide == 'A')
                 AScore += territoryLen;
             if(territorySide == 'B')
                 BScore += territoryLen;
+
+            //Reset
+            territoryLen = 0;
         }
     }
-    printf("scores : A = %d,B = %d",AScore,BScore);
+    printf("scores : A = %d,B = %d",AScore+ACapturedTokens,BScore+BCapturedTokens);
 }
 
 /*
@@ -36,16 +42,19 @@ int computeScore(){
     Returns : array of tokens
 */
 void compute(int x,int y){
+    printf("computing score for (%d,%d) \n",x,y);
     if(!SlotInGrid(x,y) || isFlagged(x,y)) return;
+    //put a flag on the slot
     flaggedX[flaggedLen] = x;
     flaggedY[flaggedLen] = y;
     flaggedLen++;
-    if(grid[y][x]!=' '){
-        territoryX[territoryLen]=x;
-        territoryY[territoryLen]=y;
-        territoryLen++;
+    //add it to the territory
+    territoryX[territoryLen]=x;
+    territoryY[territoryLen]=y;
+    territoryLen++;
+    //if it's a border stop
+    if(grid[y][x]!=' ')
         return;
-    }
     compute(x-1,y);
     compute(x+1,y);
     compute(x,y-1);

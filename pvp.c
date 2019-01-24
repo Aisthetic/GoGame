@@ -211,12 +211,13 @@ void capture(Token token){
 
 //Verifie si le slot est disponible
 int checkSlot(int X,int Y){
+    printf("checking slot. \n");
     if( !((X>=1)&&(X<=9)) || !((Y>=1)&&(X<=9)) ){
         printf("Invalid position (%d,%d)!\n",X,Y);
         return 0;
     }
-    if(grid[X-1][Y-1] != ' '){
-        printf("Already taken by  ! (%s)\n",grid[X-1][Y-1]);
+    if(grid[Y-1][X-1] != ' '){
+        printf("Already taken by %c!\n",grid[Y-1][X-1]);
         return 0;
     }
 
