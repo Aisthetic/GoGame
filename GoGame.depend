@@ -30,7 +30,7 @@
 	"score.h"
 	<string.h>
 
-1548362594 source:c:\users\dell\desktop\gogame\main.c
+1548417649 source:c:\users\dell\desktop\gogame\main.c
 	<stdio.h>
 	<stdlib.h>
 	"game.h"
@@ -40,12 +40,13 @@
 
 1547548322 c:\users\dell\desktop\gogame\logic.h
 
-1548361991 source:c:\users\dell\desktop\gogame\utils.c
+1548417482 source:c:\users\dell\desktop\gogame\utils.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
 	"logic.h"
 	"game.h"
+	<time.h>
 
 1548272675 c:\users\dell\desktop\gogame\utils.h
 
@@ -57,7 +58,7 @@
 	"logic.h"
 	"score.h"
 
-1548362206 source:c:\users\dell\desktop\gogame\game.c
+1548418609 source:c:\users\dell\desktop\gogame\game.c
 	<stdio.h>
 	<stdlib.h>
 	<conio.h>
@@ -67,6 +68,6 @@
 	"score.h"
 	<string.h>
 
-1548361956 c:\users\dell\desktop\gogame\game.h
+1548418609 c:\users\dell\desktop\gogame\game.h
 	"logic.h"
 

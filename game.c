@@ -21,14 +21,17 @@ void initGame(char ** _grid){
 	}
 
 	//PVE
-	if(pve){
+	if(pve==1){
+
         //Tirage au sort qui commence en 1er (0=player,1=machine)
         int machineFirst = randomInt(1,2);
+        printf("Starting pve..");
         if(machineFirst)
             printf("La machine joue en premier ! \n");
         else
             printf("Vous jouez en premier ! \n");
-        pveGameLoop();
+        if (difficulty = 1) pveEasyGameLoop() ;
+        //if (difficulty = 2) pveAdvancedGameLoop() ;
     }
 
     endGame();
@@ -86,10 +89,74 @@ void pvpGameLoop(){
 	}
 }
 
-void pveGameLoop(){
+void pveEasyGameLoop(){
+    //Si le nombre de tours est pair alors c'est le tour du joueur
 
+    //Choix d'une pos sur la grille
+    while(!gameOver){
+        printf(">Turn %d\n", turn);
+        if(turn%2 == 0){
+            printf("Player's turn \n") ;
+            printf("Do you want to pass ?(yes or no)\n");
+            char choice[3] = " ";//max 3 pour "yes"
+            scanf("%s",choice);
+            if(choice[0] == 'y'){//pass case
+                endTurn();
+                continue;
+            }
+            //Si le joueur a choisi de jouer
+            int Y=-1,X=-1; //pos verticale/horizontale
+            printf("Choose X : \n");//Y
+            scanf("%d", &X);
+            printf("Choose Y : \n");//X
+            scanf("%d", &Y);
+            //Check si le slot est vide
+            if(checkSlot(X,Y) == 0) continue ;
+            putToken(X,Y);
+            endTurn();
+        }
+
+        if (turn%2 == 1){
+            int Y=randomInt(1,9)  , X=randomInt(1,9) ;
+            if(checkSlot(X,Y) == 0) continue ;
+            putToken(X,Y);
+            endTurn();
+        }
+    }
 }
 
+void pveHardGameLoop(){
+    while(!gameOver){
+        printf(">Turn %d\n", turn);
+        if(turn%2 == 0){
+            printf("Player's turn \n") ;
+            printf("Do you want to pass ?(yes or no)\n");
+            char choice[3] = " ";//max 3 pour "yes"
+            scanf("%s",choice);
+            if(choice[0] == 'y'){//pass case
+                endTurn();
+                continue;
+            }
+            //Si le joueur a choisi de jouer
+            int Y=-1,X=-1; //pos verticale/horizontale
+            printf("Choose X : \n");//Y
+            scanf("%d", &X);
+            printf("Choose Y : \n");//X
+            scanf("%d", &Y);
+            //Check si le slot est vide
+            if(checkSlot(X,Y) == 0) continue ;
+            putToken(X,Y);
+            endTurn();
+        }
+
+        if (turn%2 == 1){
+            int Y=randomInt(1,9)  , X=randomInt(1,9) ;
+            if(checkSlot(X,Y) == 0) continue ;
+            putToken(X,Y);
+            endTurn();
+        }
+    }
+}
 void putToken(int X,int Y){
     Token backupTGrid[9][9];
 

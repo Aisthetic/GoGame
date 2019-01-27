@@ -22,6 +22,8 @@ void pveGameLoop();
 void putToken(int hpos,int vpos);
 int checkSlot(int hpos,int vpos);
 void initGame(char ** _grid);
+void pveEasyGameLoop();
+void pveHardGameLoop();
 int checkCapture(Token token);
 void capture(Token token);
 Team* getAllTeams();

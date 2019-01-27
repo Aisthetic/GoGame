@@ -9,6 +9,7 @@
 
 int main(){
 	int choice = -1;//Affichage du menu et choix du modes
+	printf("165161511");
 	while(choice < 1 || choice > 2){
         choice = MainMenu();
         switch(choice){
