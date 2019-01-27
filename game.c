@@ -30,8 +30,8 @@ void initGame(char ** _grid){
             printf("La machine joue en premier ! \n");
         else
             printf("Vous jouez en premier ! \n");
-        if (difficulty = 1) pveEasyGameLoop() ;
-        //if (difficulty = 2) pveAdvancedGameLoop() ;
+        if(difficulty==1) pveEasyGameLoop();
+        if(difficulty==2) pveHardGameLoop();
     }
 
     endGame();
@@ -127,6 +127,7 @@ void pveEasyGameLoop(){
 
 void pveHardGameLoop(){
     while(!gameOver){
+        printf("hard !");
         printf(">Turn %d\n", turn);
         if(turn%2 == 0){
             printf("Player's turn \n") ;
@@ -150,9 +151,8 @@ void pveHardGameLoop(){
         }
 
         if (turn%2 == 1){
-            int Y=randomInt(1,9)  , X=randomInt(1,9) ;
-            if(checkSlot(X,Y) == 0) continue ;
-            putToken(X,Y);
+            //tour du solver
+            play();
             endTurn();
         }
     }

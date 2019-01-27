@@ -54,6 +54,10 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="score.h" />
+		<Unit filename="solver.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="solver.h" />
 		<Unit filename="utils.c">
 			<Option compilerVar="CC" />
 		</Unit>

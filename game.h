@@ -26,7 +26,6 @@ void pveEasyGameLoop();
 void pveHardGameLoop();
 int checkCapture(Token token);
 void capture(Token token);
-Team* getAllTeams();
 int teamIsClosed();
 Token KoIncompatibleSlot;
 #endif
