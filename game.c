@@ -26,7 +26,7 @@ void initGame(char ** _grid){
         //Tirage au sort qui commence en 1er (0=player,1=machine)
         int machineFirst = randomInt(1,2);
         printf("Starting pve..");
-        if(machineFirst)
+        if(machineFirst&&0)
             printf("La machine joue en premier ! \n");
         else
             printf("Vous jouez en premier ! \n");
@@ -127,7 +127,7 @@ void pveEasyGameLoop(){
 
 void pveHardGameLoop(){
     while(!gameOver){
-        printf("hard !");
+        printf("*hard mode* \n");
         printf(">Turn %d\n", turn);
         if(turn%2 == 0){
             printf("Player's turn \n") ;
@@ -158,8 +158,8 @@ void pveHardGameLoop(){
     }
 }
 void putToken(int X,int Y){
+    printf("putting token(%d,%d) on the grid..",X,Y);
     Token backupTGrid[9][9];
-
     copyMatrix(backupTGrid,tGrid);
     grid[Y-1][X-1] = turn%2 == 0?'A':'B';//Indexation de 1 à 9 sur l'ihm
 

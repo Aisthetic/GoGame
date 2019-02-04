@@ -8,6 +8,18 @@
 void play(){
     int chosenX=-1;
     int chosenY=-1;
+    for(int i=0;i<8;i++){
+        for(int j=0;j<8;j++){
+            if(grid[j][i]=='A'){
+                printf("Found target(%d,%d),checking if can be bullied..",i,j);
+                if(SlotInGrid(i-1,j)&&SlotFree(i-1,j)){putToken(i,j+1);return;}
+                else if(SlotInGrid(i,j-1)&&SlotFree(i,j-1)) {putToken(i+1,j);return;}
+                else if(SlotInGrid(i+1,j)&&SlotFree(i+1,j)) {putToken(i+2,j+1);return;}
+                else if(SlotInGrid(i,j+1)&&SlotFree(i,j+1)) {putToken(i+1,j+2);return;}
+            }
+        }
+    }
+    if(hasToPass)return;
     getAllTeams();
     int teamsLen=0;
     //On récup la longueur du tableau
@@ -20,7 +32,7 @@ void play(){
 
     //On parcourt toutes les teams
     for(int i=0;i<teamsLen;i++){
-        if(allTeams[i].Members[0].side == 'A'&&true)//Ennemy or ally on applique cette methode car dans le cas d'un allié ça va le sortir d'une
+        if(allTeams[i].Members[0].side == 'A' && 1)//Ennemy or ally on applique cette methode car dans le cas d'un allié ça va le sortir d'une
         //situation de mort et dans le cas d'un ennemie ça va le capturer
         {
             int teamLiberty=0;
@@ -73,6 +85,7 @@ void play(){
     Return: tableau
 */
 void getAllTeams(){
+    hasToPass = 1;
     int teamsCount = 0;
         printf("The solver is thinking.. \n");
 
